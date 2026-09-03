@@ -32,7 +32,7 @@ add_action(
 		   ecosystem (SEO, related posts, editorial calendars) applies. */
 
 		/* Events + Documents: archive + single URLs are intentionally disabled
-		   here because the public Albanian site renders /events/ and
+		   here because the public site renders /events/ and
 		   /documents/ via page-template files that query these CPTs. Keeping
 		   `has_archive`/`rewrite` would steal those URLs from the existing
 		   pages. They are edited in wp-admin and queried via WP_Query — they

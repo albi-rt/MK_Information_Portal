@@ -75,21 +75,27 @@ function nsw_theme_path_slug( string $key, ?string $locale = null ): ?string {
  *
  * Not every locale needs an entry: nsw_theme_path_slug() falls back to 'en'.
  * To localize the paths for a new language, add its slug to each row here.
+ *
+ * NOTE — the 'mk' slugs below come from the MK repo's own i18n/routing.ts
+ * (next-intl pathnames), not developer transliterations — real MK routing,
+ * still pending native review before being treated as permanently final.
+ * The 'sq' contact slug was moved to 'kontakti' to free 'kontakt' for mk
+ * (WordPress page slugs are unique site-wide, not per-language).
  */
 function nsw_theme_path_slugs(): array {
 	return array(
-		'home'          => array( 'sq' => '', 'en' => '' ),
-		'about'         => array( 'sq' => 'rreth-nsw', 'en' => 'about' ),
-		'how-it-works'  => array( 'sq' => 'si-funksionon', 'en' => 'how-it-works' ),
-		'agencies'      => array( 'sq' => 'agjencite', 'en' => 'agencies' ),
-		'partners'      => array( 'sq' => 'partneret', 'en' => 'partners' ),
-		'faq'           => array( 'sq' => 'pyetjet-e-shpeshta', 'en' => 'faq' ),
-		'documents'     => array( 'sq' => 'dokumenta', 'en' => 'documents' ),
-		'services'      => array( 'sq' => 'sherbime', 'en' => 'services' ),
-		'news'          => array( 'sq' => 'lajme', 'en' => 'news' ),
-		'events'        => array( 'sq' => 'ngjarje', 'en' => 'events' ),
-		'contact'       => array( 'sq' => 'kontakt', 'en' => 'contact' ),
-		'support'       => array( 'sq' => 'suporti', 'en' => 'support' ),
+		'home'          => array( 'sq' => '', 'en' => '', 'mk' => '' ),
+		'about'         => array( 'sq' => 'rreth-nsw', 'en' => 'about', 'mk' => 'za-nsv' ),
+		'how-it-works'  => array( 'sq' => 'si-funksionon', 'en' => 'how-it-works', 'mk' => 'kako-funkcionira' ),
+		'agencies'      => array( 'sq' => 'agjencite', 'en' => 'agencies', 'mk' => 'agencii' ),
+		'partners'      => array( 'sq' => 'partneret', 'en' => 'partners', 'mk' => 'partneri' ),
+		'faq'           => array( 'sq' => 'pyetjet-e-shpeshta', 'en' => 'faq', 'mk' => 'cesti-prashanja' ),
+		'documents'     => array( 'sq' => 'dokumenta', 'en' => 'documents', 'mk' => 'dokumenti' ),
+		'services'      => array( 'sq' => 'sherbime', 'en' => 'services', 'mk' => 'uslugi' ),
+		'news'          => array( 'sq' => 'lajme', 'en' => 'news', 'mk' => 'vesti' ),
+		'events'        => array( 'sq' => 'ngjarje', 'en' => 'events', 'mk' => 'nastani' ),
+		'contact'       => array( 'sq' => 'kontakti', 'en' => 'contact', 'mk' => 'kontakt' ),
+		'support'       => array( 'sq' => 'suporti', 'en' => 'support', 'mk' => 'poddrshka' ),
 	);
 }
 

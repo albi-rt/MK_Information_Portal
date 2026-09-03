@@ -4,7 +4,7 @@
  *
  *   1. Validate required fields (fullName, email, category, subject, message).
  *   2. Create a MantisBT ticket via REST (see inc/contact-mantis.php).
- *   3. Send a customer-facing confirmation email referencing NSWAL-<id>.
+ *   3. Send a customer-facing confirmation email referencing NSWMK-<id>.
  *
  * Protections: wp_rest nonce, honeypot (`website`), per-IP 30s rate limit, length caps.
  *
@@ -84,7 +84,7 @@ function nsw_theme_handle_contact( WP_REST_Request $request ) {
     if ( nsw_theme_contact_mantis_configured() ) {
         $issue = nsw_theme_contact_create_mantis_issue( $data );
         if ( is_wp_error( $issue ) ) { return $issue; }
-        $ref = $issue['id'] ? 'NSWAL-' . $issue['id'] : '';
+        $ref = $issue['id'] ? 'NSWMK-' . $issue['id'] : '';
 
         if ( $ref ) {
             try { nsw_theme_contact_send_confirmation_email( $data, $ref ); }

@@ -6,7 +6,7 @@
  *
  * Secrets (wp-config.php constants):
  *   NSW_THEME_MANTIS_URL         base URL, trailing slash (REST at {URL}api/rest/)
- *   NSW_THEME_MANTIS_TOKEN       API token for the nswal_web service account
+ *   NSW_THEME_MANTIS_TOKEN       API token for the [TBD] nswmk_web service account
  *   NSW_THEME_MANTIS_PROJECT_ID  Mantis project id (default "1")
  *
  * @package NSW_Theme
@@ -27,7 +27,7 @@ function nsw_theme_contact_mantis_configured(): bool {
         && '' !== nsw_theme_contact_config( 'mantis_project_id', '1' );
 }
 
-/** Form category key => Mantis category name (must match sql/nswal_setup.sql). */
+/** Form category key => Mantis category name (must match [TBD] sql/nswmk_setup.sql). */
 function nsw_theme_contact_category_labels(): array {
     return apply_filters( 'nsw_theme_contact_category_labels', array(
         'general'      => 'General inquiry',

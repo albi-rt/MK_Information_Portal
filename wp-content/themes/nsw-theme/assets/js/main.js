@@ -1,4 +1,4 @@
-/* NSW Albania — front-end JS. No frameworks. */
+/* NSW North Macedonia — front-end JS. No frameworks. */
 
 (function () {
 	"use strict";

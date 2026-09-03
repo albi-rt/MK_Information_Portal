@@ -1,6 +1,6 @@
 <?php
 /**
- * NSW Albania theme bootstrap.
+ * NSW North Macedonia theme bootstrap.
  *
  * @package NSW_Theme
  */
@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'NSW_THEME_VERSION' ) ) {
-	define( 'NSW_THEME_VERSION', '0.11.0' );
+	define( 'NSW_THEME_VERSION', '0.12.0' );
 }
 if ( ! defined( 'NSW_THEME_DIR' ) ) {
 	define( 'NSW_THEME_DIR', trailingslashit( get_template_directory() ) );

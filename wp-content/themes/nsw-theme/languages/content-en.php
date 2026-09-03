@@ -38,15 +38,15 @@ return array (
   ),
   'footer' => 
   array (
-    'description' => 'Albania\'s National Single Window — The electronic platform for facilitating cross-border trade.',
+    'description' => 'North Macedonia\'s National Single Window — The electronic platform for facilitating cross-border trade.',
     'quickLinks' => 'Quick Links',
     'resources' => 'Resources',
     'contactInfo' => 'Contact Info',
-    'address' => 'Rruga "Dëshmorët e 4 Shkurtit", Tirana, Albania',
-    'email' => 'info@nsw.al',
+    'address' => 'bul. "Kuzman Josifovski-Pitu" 1, Skopje, North Macedonia',
+    'email' => 'info@nsw.mk',
     'hours' => 'Monday – Friday, 08:00–16:00',
-    'copyright' => '© {year} National Single Window — Albania. All rights reserved.',
-    'fundingAck' => 'Funded by the World Bank (IBRD) in support of trade facilitation in Albania.',
+    'copyright' => '© {year} National Single Window — North Macedonia. All rights reserved.',
+    'fundingAck' => 'Funded by the World Bank (IBRD) in support of trade facilitation in North Macedonia.',
     'privacy' => 'Privacy Policy',
     'terms' => 'Terms of Service',
   ),
@@ -137,8 +137,8 @@ return array (
     ),
     'info' => 
     array (
-      'address' => 'Rruga "Dëshmorët e 4 Shkurtit", Tirana, Albania',
-      'email' => 'info@nsw.al',
+      'address' => 'bul. "Kuzman Josifovski-Pitu" 1, Skopje, North Macedonia',
+      'email' => 'info@nsw.mk',
       'hours' => 'Monday – Friday, 08:00–16:00',
       'hoursLabel' => 'Working Hours',
       'mapPlaceholder' => 'Map will be added soon',

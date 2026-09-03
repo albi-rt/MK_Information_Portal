@@ -1,11 +1,12 @@
 /* =====================================================================
-   NSW Albania — main stylesheet.
+   NSW North Macedonia — main stylesheet.
 
-   Design tokens follow the NSW Albania brand package (2026).
+   Design tokens carried over from the NSW Albania brand package (2026) as a
+   placeholder [TBD]; pending the North Macedonia brand package.
    Open Sans (body) and Montserrat (display) are self-hosted (see assets/fonts/).
    ===================================================================== */
 
-/* NSW Albania brand fonts — Open Sans (body) + Montserrat (display). Self-hosted, no CDN. */
+/* NSW North Macedonia brand fonts — Open Sans (body) + Montserrat (display). Self-hosted, no CDN. */
 @font-face {
 	font-family: 'Open Sans';
 	font-style: normal;
@@ -1836,7 +1837,7 @@ body.admin-bar .site-header { top: 32px; }
 /* Single article ----------------------------------------------------------
    Hero (red gradient, back link, badge, title, date+author meta) + 2-column
    content grid (article body 2/3 + related articles 1/3). Mirrors the MK
-   pattern, brand-colored for Albania. */
+   pattern, brand-colored for North Macedonia. */
 
 .article__hero {
 	background: linear-gradient(

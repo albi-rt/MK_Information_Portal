@@ -112,7 +112,7 @@ function nsw_theme_render_event_meta_box( WP_Post $post ): void {
 	</p>
 	<p>
 		<label for="nsw_theme_event_location"><strong><?php esc_html_e( 'Location', 'nsw-theme' ); ?></strong></label><br>
-		<input type="text" id="nsw_theme_event_location" name="nsw_theme_event_location" value="<?php echo esc_attr( $location ); ?>" class="widefat" placeholder="<?php esc_attr_e( 'e.g. Tirana, Ministry of Economy', 'nsw-theme' ); ?>">
+		<input type="text" id="nsw_theme_event_location" name="nsw_theme_event_location" value="<?php echo esc_attr( $location ); ?>" class="widefat" placeholder="<?php esc_attr_e( 'e.g. Skopje, Ministry of Economy', 'nsw-theme' ); ?>">
 	</p>
 	<p>
 		<label for="nsw_theme_event_type"><strong><?php esc_html_e( 'Type', 'nsw-theme' ); ?></strong></label><br>

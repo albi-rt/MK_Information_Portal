@@ -37,7 +37,7 @@ function nsw_theme_capture_part( string $slug, ?string $name = null, array $args
 function nsw_theme_block_fields(): array {
 	return array(
 		'nsw-theme/hero-home' => array(
-			array( 'attr' => 'title',    'label' => 'Title',           'type' => 'text',     'default' => nsw_theme_t( 'hero.title', 'Transforming Albanian Trade' ) ),
+			array( 'attr' => 'title',    'label' => 'Title',           'type' => 'text',     'default' => nsw_theme_t( 'hero.title', 'Transforming North Macedonia\'s Trade' ) ),
 			array( 'attr' => 'subtitle', 'label' => 'Subtitle',        'type' => 'textarea', 'default' => nsw_theme_t( 'hero.subtitle', '' ) ),
 			array( 'attr' => 'cta1Text', 'label' => 'Button 1 label',  'type' => 'text',     'default' => nsw_theme_t( 'hero.cta1', 'Learn More' ) ),
 			array( 'attr' => 'cta1Url',  'label' => 'Button 1 link',   'type' => 'url',      'default' => nsw_theme_path_url( 'about' ) ),
@@ -155,12 +155,18 @@ function nsw_theme_field( array $attributes, string $key, string $fallback = '' 
  * @return array<string, array{dark: string, light: string}>
  */
 function nsw_theme_brand_logo_files(): array {
-	$en = array( 'dark' => 'nsw-logo.svg', 'light' => 'nsw-logo-en-light.svg' );
-	$sq = array( 'dark' => 'nsw-logo-alb.svg', 'light' => 'nsw-logo-alb-light.svg' );
+	// North Macedonia (nswmk) brand: all three languages share the same NMK
+	// lockup — there is no per-language variant like the Albania build had.
+	// nsw-nmk-logo-red.svg / nsw-nmk-logo-red-light.svg are PLACEHOLDER marks
+	// (see nsw-mk MIGRATION_TODO.md: "Replace placeholder NSW NMK SVG logos
+	// with real branding") — swap the two files in assets/images/logos/ (and
+	// nothing else) once the client provides final artwork.
+	$nmk = array( 'dark' => 'nsw-nmk-logo-red.svg', 'light' => 'nsw-nmk-logo-red-light.svg' );
 	return array(
-		'en'      => $en,
-		'sq'      => $sq,
-		'default' => $sq,
+		'en'      => $nmk,
+		'sq'      => $nmk,
+		'mk'      => $nmk,
+		'default' => $nmk,
 	);
 }
 
@@ -187,7 +193,7 @@ function nsw_theme_block_footer_logo(): string {
 	$file = nsw_theme_brand_logo_file( true );
 	return '<a class="site-footer__logo" href="' . esc_url( nsw_theme_home_url() ) . '">'
 		. '<img src="' . esc_url( NSW_THEME_URI . 'assets/images/logos/' . $file ) . '" alt="'
-		. esc_attr__( 'NSW Albania — National Single Window', 'nsw-theme' ) . '" width="185" height="60" /></a>';
+		. esc_attr__( 'NSW North Macedonia — National Single Window', 'nsw-theme' ) . '" width="185" height="60" /></a>';
 }
 
 /** Bilingual text piece. Attributes: tkey (string key), tag, cls, year (bool). */
@@ -214,11 +220,11 @@ function nsw_theme_block_footer_contact(): string {
 	<ul class="site-footer__contact">
 		<li>
 			<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-			<span><?php echo esc_html( nsw_theme_t( 'footer.address', 'Rruga "Dëshmorët e 4 Shkurtit", Tiranë, Shqipëri' ) ); ?></span>
+			<span><?php echo esc_html( nsw_theme_t( 'footer.address', 'bul. "Kuzman Josifovski-Pitu" 1, Skopje, North Macedonia' ) ); ?></span>
 		</li>
 		<li>
 			<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
-			<span><?php echo esc_html( nsw_theme_t( 'footer.email', 'info@nsw.al' ) ); ?></span>
+			<span><?php echo esc_html( nsw_theme_t( 'footer.email', 'info@nsw.mk' ) ); ?></span>
 		</li>
 		<li>
 			<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
@@ -279,8 +285,8 @@ function nsw_theme_block_hero_home( $attributes = array() ): string {
 	nsw_theme_render_hero(
 		array(
 			'variant'  => 'large',
-			'title'    => nsw_theme_field( $attributes, 'title', nsw_theme_t( 'hero.title', 'Transforming Albanian Trade' ) ),
-			'subtitle' => nsw_theme_field( $attributes, 'subtitle', nsw_theme_t( 'hero.subtitle', 'The National Single Window — the single electronic entry point for all cross-border trade regulatory requirements in Albania.' ) ),
+			'title'    => nsw_theme_field( $attributes, 'title', nsw_theme_t( 'hero.title', 'Transforming North Macedonia\'s Trade' ) ),
+			'subtitle' => nsw_theme_field( $attributes, 'subtitle', nsw_theme_t( 'hero.subtitle', 'The National Single Window — the single electronic entry point for all cross-border trade regulatory requirements in North Macedonia.' ) ),
 			'children' => $hero_cta,
 			'bg_url'   => nsw_theme_field( $attributes, 'bgMedia', '' ),
 			'bg_mime'  => isset( $attributes['bgMediaMime'] ) ? (string) $attributes['bgMediaMime'] : '',
@@ -631,7 +637,7 @@ add_action(
  * NOTE on language: the pattern content is a static string captured ONCE per
  * request, at init, in the CURRENT locale — so the headings land in the
  * language of the wp-admin editor session that inserts the pattern (officers
- * editing in the Albanian admin get "Hapat", an English admin gets "Steps").
+ * editing in the Macedonian admin get "Чекори", an English admin gets "Steps").
  * That is the intended behavior: the inserted headings are plain content owned
  * by the post's language from then on.
  */
