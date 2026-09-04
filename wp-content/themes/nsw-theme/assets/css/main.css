@@ -864,7 +864,16 @@ body.admin-bar .site-header { top: 32px; }
 	width: 100%;
 	align-self: stretch;
 }
-.partner-card__logo img { height: 2.25rem; width: auto; object-fit: contain; } /* h-9 */
+/* Fixed-height logo box (matches .partner-tile__logo above): the box height
+   (h-14 on .partner-card__logo) is the normalized dimension, the img is
+   capped to it and never distorted, regardless of the source logo's own
+   aspect ratio. */
+.partner-card__logo img {
+	max-height: 2.25rem;  /* h-9 */
+	max-width: 100%;
+	width: auto;
+	object-fit: contain;
+}
 .partner-card__placeholder {
 	width: 3.5rem;
 	height: 3.5rem;
@@ -890,6 +899,24 @@ body.admin-bar .site-header { top: 32px; }
 	margin-top: 0.5rem;    /* mt-2 from name */
 }
 
+/* Partner strip (homepage) — the row wrapping all .partner-tile items.
+   MUST use align-items: flex-start, not center: tiles vary in total height
+   because partner-name labels wrap to different numbers of lines (agency
+   names run much longer than e.g. "CEFTA"), and centering the row would
+   vertically offset each tile by half of that difference — making logos
+   with short labels sit lower and logos with long/wrapped labels sit
+   higher, even though every .partner-tile__logo box itself is a fixed
+   height. flex-start pins every tile's top (and therefore every logo box)
+   to the same line regardless of label length. */
+.partners-strip {
+	margin-top: 3rem;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	justify-content: center;
+	gap: 2rem;
+}
+
 /* Partner tile (used on homepage strip) */
 .partner-tile {
 	display: flex;
@@ -897,16 +924,26 @@ body.admin-bar .site-header { top: 32px; }
 	align-items: center;
 	gap: 0.5rem;
 }
+/* Fixed-height logo box: partner logos come in wildly different intrinsic
+   aspect ratios (wide wordmark SVGs vs near-square/tall coat-of-arms PNGs).
+   The box height is the single normalized dimension; the img inside is
+   constrained to it and centered, so every logo renders at the same
+   height regardless of its own width. */
 .partner-tile__logo {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: 4rem;         /* h-16 */
+	height: 4rem;         /* h-16 — fixed logo box */
 	padding: 0 0.75rem;   /* px-3 */
 	border-radius: var(--radius-lg);
 	/* No default background; only the logoBg style attribute paints it. */
 }
-.partner-tile__logo img { height: 2rem; width: auto; object-fit: contain; } /* h-8 */
+.partner-tile__logo img {
+	max-height: 100%;
+	max-width: 100%;
+	width: auto;
+	object-fit: contain;
+}
 .partner-tile__label {
 	font-size: 0.75rem;   /* text-xs */
 	color: var(--muted-foreground);

@@ -33,7 +33,11 @@ $render_partner_card = static function ( array $partner, string $locale ) {
 	<div class="card partner-card">
 		<?php if ( $logo ) : ?>
 			<div class="partner-card__logo<?php echo $logo_bg ? ' partner-card__logo--bg' : ''; ?>"<?php if ( $logo_bg ) : ?> style="background: <?php echo esc_attr( (string) $color ); ?>"<?php endif; ?>>
-				<img src="<?php echo esc_url( $logo ); ?>" alt="<?php echo esc_attr( (string) $name ); ?>" width="172" height="34" />
+				<?php /* No fixed width/height attributes: real partner logos have widely varying
+				intrinsic aspect ratios (wide wordmarks vs near-square/tall coat-of-arms),
+				so a single hardcoded ratio would misreport the image's aspect ratio to the
+				browser. Sizing is fully owned by .partner-card__logo img (max-height + object-fit). */ ?>
+				<img src="<?php echo esc_url( $logo ); ?>" alt="<?php echo esc_attr( (string) $name ); ?>" />
 			</div>
 		<?php else :
 			$placeholder = 'world-bank' === $id ? 'WB' : ( 'cefta' === $id ? 'CEFTA' : ( 'ministry-finance' === $id ? 'MFE' : 'NAIS' ) ); ?>

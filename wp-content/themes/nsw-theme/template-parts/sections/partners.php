@@ -19,7 +19,7 @@ $locale   = nsw_theme_current_locale();
 			<p class="section-heading__subtitle"><?php echo esc_html( get_query_var( 'nsw_theme_partners_subtitle' ) ?: nsw_theme_t( 'partnersSection.subtitle', 'NSW is supported by international partners and government institutions' ) ); ?></p>
 		</div>
 
-		<div style="margin-top:3rem; display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:2rem">
+		<div class="partners-strip">
 			<?php
 			$i = 0;
 			foreach ( $partners as $partner ) :
