@@ -19,18 +19,18 @@
 			"defaultPalette": false,
 			"defaultGradients": false,
 			"palette": [
-				{ "name": "Primary",         "slug": "primary",          "color": "#5D3A8C" },
+				{ "name": "Primary",         "slug": "primary",          "color": "#C1272D" },
 				{ "name": "Primary Contrast","slug": "primary-contrast", "color": "#ffffff" },
-				{ "name": "Secondary",       "slug": "secondary",        "color": "#6B2C91" },
-				{ "name": "Purple Dark",     "slug": "purple-dark",      "color": "#3D2561" },
-				{ "name": "Purple Light",    "slug": "purple-light",     "color": "#9B7BB8" },
-				{ "name": "Purple Accent",   "slug": "purple-accent",    "color": "#A074C7" },
+				{ "name": "Secondary",       "slug": "secondary",        "color": "#5C4419" },
+				{ "name": "Red Dark",        "slug": "purple-dark",      "color": "#87161E" },
+				{ "name": "Red Light",       "slug": "purple-light",     "color": "#D89490" },
+				{ "name": "Red Accent",      "slug": "purple-accent",    "color": "#E98F88" },
 				{ "name": "Foreground",      "slug": "foreground",       "color": "#222222" },
 				{ "name": "Background",      "slug": "background",       "color": "#ffffff" },
-				{ "name": "Muted",           "slug": "muted",            "color": "#F4F2F7" },
-				{ "name": "Muted Text",      "slug": "muted-foreground", "color": "#6E6E6E" },
-				{ "name": "Accent",          "slug": "accent",           "color": "#EDE6F6" },
-				{ "name": "Border",          "slug": "border",           "color": "#E4DEEE" }
+				{ "name": "Muted",           "slug": "muted",            "color": "#FBF6F6" },
+				{ "name": "Muted Text",      "slug": "muted-foreground", "color": "#7A5E5E" },
+				{ "name": "Accent",          "slug": "accent",           "color": "#E9C46A" },
+				{ "name": "Border",          "slug": "border",           "color": "#ECE3E3" }
 			]
 		},
 		"typography": {
@@ -101,7 +101,7 @@
 				"border": { "radius": "0.375rem" },
 				"spacing": { "padding": { "top": "0.6rem", "bottom": "0.6rem", "left": "1.1rem", "right": "1.1rem" } },
 				":hover": {
-					"color": { "background": "#3D2561" }
+					"color": { "background": "#87161E" }
 				}
 			}
 		},
