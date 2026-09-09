@@ -74,6 +74,70 @@ function nsw_theme_get_agencies(): array {
  * description / documents are plain values in the post's own language. Falls
  * back to the post title when the name meta is empty.
  */
+/**
+ * Agency logos shipped WITH THE THEME (git-deployable), keyed by the agency's
+ * official website host. A theme asset wins over the Media Library image, so
+ * logos deploy from git instead of being uploaded per site.
+ *
+ * Many .gov.mk ministries share one common emblem (the RNM state coat of arms)
+ * rather than having a distinct logo — that is correct, not a placeholder.
+ */
+function nsw_theme_agency_logo_map(): array {
+	return (array) apply_filters(
+		'nsw_theme_agency_logo_map',
+		array(
+			/* Ministries: verified against their own sites — mvr/moepp/zdravstvo/mzsv/mfa
+			   all serve the byte-identical shared emblem, i.e. the RNM state coat of
+			   arms. Sharing one emblem here is correct, not a placeholder. */
+			'mvr.gov.mk'       => 'rnm-coat-of-arms.svg',
+			'moepp.gov.mk'     => 'rnm-coat-of-arms.svg',
+			'zdravstvo.gov.mk' => 'rnm-coat-of-arms.svg',
+			'mzsv.gov.mk'      => 'rnm-coat-of-arms.svg',
+			'mfa.gov.mk'       => 'rnm-coat-of-arms.svg',
+
+			// Agencies with their own emblem, taken from each agency's official site.
+			'malmed.gov.mk'    => 'malmed.jpg',
+			'fva.gov.mk'       => 'fva.png',
+			'drs.gov.mk'       => 'drs.png',
+			'customs.gov.mk'   => 'customs.png',
+			'uzkn.gov.mk'      => 'uzkn.jpg',
+
+			/* These two agencies' stored website URLs are misspelled (dzi -> diz,
+			   dsszi -> dszi); the stored hosts do not resolve. Map BOTH spellings so
+			   the logo renders now and still renders once the URLs are corrected. */
+			'dzi.gov.mk'       => 'diz-emblem.png',
+			'diz.gov.mk'       => 'diz-emblem.png',
+			'dsszi.gov.mk'     => 'dszi.png',
+			'dszi.gov.mk'      => 'dszi.png',
+		)
+	);
+}
+
+/**
+ * Resolve an agency's theme-shipped logo to a "/agencies/<file>" path that
+ * nsw_theme_asset_url() maps into the theme. Returns '' when the agency is not
+ * mapped or the file is absent, so the Media Library image stays the fallback.
+ */
+function nsw_theme_agency_theme_logo( array $agency ): string {
+	$website = (string) ( $agency['website'] ?? '' );
+	if ( '' === $website ) {
+		return '';
+	}
+	$host = strtolower( (string) wp_parse_url( $website, PHP_URL_HOST ) );
+	$host = preg_replace( '/^www\./', '', $host );
+
+	$map = nsw_theme_agency_logo_map();
+	if ( '' === $host || empty( $map[ $host ] ) ) {
+		return '';
+	}
+
+	$file = (string) $map[ $host ];
+	if ( ! is_readable( NSW_THEME_DIR . 'assets/images/agencies/' . $file ) ) {
+		return '';
+	}
+	return '/agencies/' . $file;
+}
+
 function nsw_theme_agency_post_to_array( WP_Post $post ): array {
 	$post_id = $post->ID;
 	$id      = (string) get_post_meta( $post_id, '_nsw_theme_agency_id', true );
@@ -94,7 +158,7 @@ function nsw_theme_agency_post_to_array( WP_Post $post ): array {
 
 	$name = (string) get_post_meta( $post_id, '_nsw_theme_agency_name', true );
 
-	return array(
+	$agency = array(
 		'id'           => $id ?: $post->post_name,
 		'abbreviation' => (string) get_post_meta( $post_id, '_nsw_theme_agency_abbr', true ),
 		'image'        => $image_url,
@@ -104,6 +168,15 @@ function nsw_theme_agency_post_to_array( WP_Post $post ): array {
 		'color'        => (string) get_post_meta( $post_id, '_nsw_theme_agency_color',   true ),
 		'website'      => (string) get_post_meta( $post_id, '_nsw_theme_agency_website', true ),
 	);
+
+	/* A logo shipped in the theme wins over the Media Library upload, so agency
+	   branding deploys from git. Falls back silently when unmapped/absent. */
+	$theme_logo = nsw_theme_agency_theme_logo( $agency );
+	if ( '' !== $theme_logo ) {
+		$agency['image'] = $theme_logo;
+	}
+
+	return $agency;
 }
 
 /**
