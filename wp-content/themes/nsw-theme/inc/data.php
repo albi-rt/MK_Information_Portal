@@ -89,7 +89,9 @@ function nsw_theme_agency_logo_map(): array {
 			/* Ministries: verified against their own sites — mvr/moepp/zdravstvo/mzsv/mfa
 			   all serve the byte-identical shared emblem, i.e. the RNM state coat of
 			   arms. Sharing one emblem here is correct, not a placeholder. */
-			'mvr.gov.mk'       => 'rnm-coat-of-arms.svg',
+			/* MVR is the one ministry with its own institutional emblem (the police
+			   shield) alongside the shared state emblem on its site. */
+			'mvr.gov.mk'       => 'mvr-amblem.png',
 			'moepp.gov.mk'     => 'rnm-coat-of-arms.svg',
 			'zdravstvo.gov.mk' => 'rnm-coat-of-arms.svg',
 			'mzsv.gov.mk'      => 'rnm-coat-of-arms.svg',
