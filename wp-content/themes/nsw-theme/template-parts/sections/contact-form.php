@@ -133,9 +133,25 @@ $ags['other'] = __( 'Other', 'nsw-theme' );
 					</li>
 				</ul>
 
+				<?php
+				/* Map pin: бул. „Кузман Јосифовски-Питу“ 1, Скопје — the same address
+				   listed above. The ?q=lat,lng&output=embed form needs no API key and,
+				   unlike Google's opaque "pb=" blob, stays readable and editable.
+				   hl follows the site language so map labels match the visitor's locale. */
+				$nsw_map_coords = '41.9937332,21.4428470';
+				$nsw_map_src    = add_query_arg(
+					array(
+						'q'      => $nsw_map_coords,
+						'z'      => 17,
+						'hl'     => nsw_theme_current_locale(),
+						'output' => 'embed',
+					),
+					'https://www.google.com/maps'
+				);
+				?>
 				<div class="contact-map">
 					<iframe
-						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1753.1284235072433!2d19.81713309557829!3d41.32572489349983!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x135031001c9c66e9%3A0x894cb8df07a169a9!2sMinistria%20e%20Ekonomis%C3%AB%2C%20Kultur%C3%ABs%20dhe%20Inovacionit!5e1!3m2!1sen!2s!4v1771969638317!5m2!1sen!2s"
+						src="<?php echo esc_url( $nsw_map_src ); ?>"
 						width="600"
 						height="256"
 						style="border:0; width:100%; height:16rem"
