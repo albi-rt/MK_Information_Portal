@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="270" height="180" viewBox="0 0 270 180">
-  <!-- NSW North Macedonia placeholder logo -->
-  <g font-family="Georgia, 'Times New Roman', serif">
-    <text x="20" y="100" font-size="84" font-weight="700" fill="#C8102E" letter-spacing="-2">NSW</text>
-    <circle cx="245" cy="78" r="10" fill="#FFCC00"/>
-    <text x="20" y="138" font-size="20" font-weight="600" fill="#C8102E" letter-spacing="0.5">Северна Македонија</text>
-    <text x="20" y="160" font-size="14" font-weight="400" fill="#666666" letter-spacing="0.3">National Single Window</text>
-  </g>
-</svg>

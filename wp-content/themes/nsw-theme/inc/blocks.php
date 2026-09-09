@@ -155,18 +155,17 @@ function nsw_theme_field( array $attributes, string $key, string $fallback = '' 
  * @return array<string, array{dark: string, light: string}>
  */
 function nsw_theme_brand_logo_files(): array {
-	// North Macedonia (nswmk) brand: all three languages share the same NMK
-	// lockup — there is no per-language variant of it.
-	// nsw-nmk-logo-red.svg / nsw-nmk-logo-red-light.svg are PLACEHOLDER marks
-	// (see nsw-mk MIGRATION_TODO.md: "Replace placeholder NSW NMK SVG logos
-	// with real branding") — swap the two files in assets/images/logos/ (and
-	// nothing else) once the client provides final artwork.
-	$nmk = array( 'dark' => 'nsw-nmk-logo-red.svg', 'light' => 'nsw-nmk-logo-red-light.svg' );
+	/* Real NSW brand lockup, taken from the MKNSW trader portal
+	   (public/assets/images/nsw-logo). Two wordmark variants exist: Macedonian
+	   and English. Albanian uses the English lockup — the same rule the trader
+	   portal's NswLogo component applies, so both products stay consistent. */
+	$en = array( 'dark' => 'nsw-nmk-logo-en.png', 'light' => 'nsw-nmk-logo-en-light.png' );
+	$mk = array( 'dark' => 'nsw-nmk-logo-mk.png', 'light' => 'nsw-nmk-logo-mk-light.png' );
 	return array(
-		'en'      => $nmk,
-		'sq'      => $nmk,
-		'mk'      => $nmk,
-		'default' => $nmk,
+		'en'      => $en,
+		'sq'      => $en,
+		'mk'      => $mk,
+		'default' => $en,
 	);
 }
 

@@ -1,22 +1,22 @@
 /* =====================================================================
    NSW North Macedonia — main stylesheet.
 
-   Brand palette (2026): North Macedonia "NMK Red" — replaces the NSW
+   Brand palette (2026): North Macedonia "NSW Navy" — replaces the NSW
    brand placeholder. Source of truth is the reference Next.js
    site (nsw-mk), app/globals.css shadcn/Tailwind tokens, defined in OKLCH
    and here converted to the closest in-gamut sRGB hex (CSS Color 4 gamut
    mapping, i.e. what a browser actually paints — NOT a naive per-channel
    clamp, which over-saturates and skews the hue):
-     --primary            #C1272D  <- oklch(0.50 0.22 25)   "NMK Red"
+     --primary            #083D5D  <- oklch(0.50 0.22 25)   "NSW Navy"
      --primary-foreground #ffffff  <- oklch(1.00 0    0)
      --secondary           #FBF2F2  <- oklch(0.967 0.008 25)
-     --secondary-foreground #87161E <- darkened primary (button-hover /
+     --secondary-foreground #052A40 <- darkened primary (button-hover /
                                         badge-text shade; ~oklch(0.33 primary hue))
-     --muted               #FBF6F6  <- oklch(0.9846 0.004 25)
-     --muted-foreground    #7A5E5E  <- oklch(0.551 0.04 25)
-     --accent              #E9C46A  <- oklch(0.85 0.16 90)   "Gold" (nav/dropdown hover)
-     --accent-foreground   #5C4419  <- oklch(0.30 0.15 60)
-     --border              #ECE3E3  <- oklch(0.9276 0.01 25)
+     --muted               #F4F8FB  <- oklch(0.9846 0.004 25)
+     --muted-foreground    #5B7183  <- oklch(0.551 0.04 25)
+     --accent              #D6EBFA  <- oklch(0.85 0.16 90)   "Sky tint" (nav/dropdown hover)
+     --accent-foreground   #0B4E75  <- oklch(0.30 0.15 60)
+     --border              #DCE6EE  <- oklch(0.9276 0.01 25)
    Editor-only theme.json swatches (Purple Light/Accent, slugs unchanged)
    were derived by preserving each swatch's original HSL offset from the
    AL primary, reprojected onto the new red hue. --foreground/--background
@@ -91,8 +91,8 @@
 
 	/* Extended tokens with no palette equivalent — defined here. */
 	--secondary: #FBF2F2;
-	--secondary-foreground: #87161E;
-	--accent-foreground: #5C4419;
+	--secondary-foreground: #052A40;
+	--accent-foreground: #0B4E75;
 	--destructive: oklch(0.6368 0.2078 25.3313);
 	--destructive-foreground: var(--background);
 
