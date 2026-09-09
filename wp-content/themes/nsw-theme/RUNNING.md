@@ -1,4 +1,4 @@
-# Running the NSW Albania theme locally
+# Running the NSW North Macedonia theme locally
 
 Use **Local by Flywheel** — free, GUI, real LAMP stack. Do **not** use wp-now; it's a WASM sandbox with SQLite and doesn't match production behaviour.
 
@@ -17,7 +17,7 @@ Use **Local by Flywheel** — free, GUI, real LAMP stack. Do **not** use wp-now;
    ```
    (The repo root — `inc/data.php` reads `content/news/{sq,en}/*.json` from there.)
 4. **Activate the theme + run setup.** In wp-admin:
-   - **Appearance → Themes** → activate **NSW Albania**.
+   - **Appearance → Themes** → activate **NSW Theme**.
    - **Settings → Permalinks** → click **Save Changes** (refreshes rewrite rules so the CPT archive URL works).
    - **Tools → NSW Setup** → click **Run import**. This creates the static pages, wires them to the right templates, sets the front page, and imports the news articles.
 
@@ -32,7 +32,7 @@ The header has an SQ / EN toggle. Clicking writes a `nsw_theme_lang` cookie and 
 ## Adding Polylang
 
 1. **Plugins → Add New** → install + activate **Polylang**.
-2. **Languages** → add Albanian (sq) and English (en); set Albanian as default.
+2. **Languages** → add Macedonian (mk), Albanian (sq) and English (en); set Macedonian as default.
 3. **Tools → NSW Setup** → click **Link Polylang sq ↔ en pairs** to wire up news translations.
 4. Polylang's own language switcher takes over; the theme's i18n filters automatically step aside.
 

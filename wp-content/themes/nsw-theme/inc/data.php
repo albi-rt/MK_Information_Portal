@@ -435,7 +435,7 @@ function nsw_theme_translate_content_tree( array $node, string $locale ): array 
 }
 
 /**
- * Translate a path that the Next.js public/ folder used (e.g. "/agencies/dpd-logo.svg")
+ * Translate a path that the Next.js public/ folder used (e.g. "/agencies/customs.png")
  * to a theme asset URL. Idempotent for paths that already point at the theme.
  */
 function nsw_theme_asset_url( string $path ): string {

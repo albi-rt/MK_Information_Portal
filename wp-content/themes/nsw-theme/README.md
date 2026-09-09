@@ -1,6 +1,6 @@
-# NSW Albania — WordPress theme
+# NSW North Macedonia — WordPress theme
 
-Custom WordPress theme for the Albanian National Single Window (Dritarja e Vetme Kombëtare). This is a WordPress-only project: all editorial content lives in the database and is managed in native wp-admin.
+Custom WordPress theme for the North Macedonia National Single Window (Единствен национален прозорец). This is a WordPress-only project: all editorial content lives in the database and is managed in native wp-admin.
 
 ## Architecture
 
@@ -58,7 +58,7 @@ Two operating modes, picked automatically:
 - **Cookie mode (default).** `?setlang=sq|en` sets a `nsw_theme_lang` cookie; subsequent requests are served in that locale. The `gettext`, `the_title`, `single_post_title`, `post_type_archive_title`, and `wp_nav_menu_objects` filters look up English strings in `languages/sq-translations.php`. `convert_chars()`-encoded ampersands are decoded before lookup (gotcha #1 from the playbook).
 - **Polylang mode.** If Polylang is active (`pll_current_language` exists), all of the above is skipped — Polylang owns its own switcher and per-language post scoping.
 
-UI microcopy comes from `languages/content-{sq,en}.php` (nested PHP maps). The `nsw_theme_t( 'hero.title', 'Transforming Albanian Trade' )` helper resolves dotted keys through that map first, then falls back to the cookie-mode flat map, then to the hard-coded English literal.
+UI microcopy comes from `languages/content-{sq,en}.php` (nested PHP maps). The `nsw_theme_t( 'hero.title', 'Transforming Trade' )` helper resolves dotted keys through that map first, then falls back to the cookie-mode flat map, then to the hard-coded English literal.
 
 ## Database content
 

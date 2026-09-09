@@ -1,4 +1,4 @@
-# NSW Albania — Production Deploy Runbook (Plesk)
+# NSW North Macedonia — Production Deploy Runbook (Plesk)
 
 Deploy = **WordPress install + theme code + database + uploads**. The code
 is in this repo; the content lives in the database. Local users are NOT exported —
@@ -6,7 +6,7 @@ production keeps its own Plesk-created admin account.
 
 - Repo: this repository (`wp-content/themes/nsw-theme`; WP core and third-party plugins are gitignored)
 - **Database export & uploads travel separately** (not in git): the users-excluded DB dump
-  `nswal-PROD-<hash>.sql.gz` and the `wp-content/uploads/` folder (~19 MB) come from the
+  `nswmk-PROD-<hash>.sql.gz` and the `wp-content/uploads/` folder (~19 MB) come from the
   local machine's `backups/` folder / Local site.
 
 > Menu labels vary slightly by Plesk version; paths below are for a recent Plesk Obsidian with **WordPress Toolkit**.
@@ -44,12 +44,12 @@ Then WordPress Toolkit → **Themes** → activate **NSW Theme**.
 ## 5. Import the database
 The export already **excludes `wp_users`/`wp_usermeta`**, so your Plesk admin survives the import.
 
-**Via phpMyAdmin (easiest):** WordPress Toolkit → your site → **Database** → **phpMyAdmin** → select the site's DB → **Import** tab → upload `nswal-PROD-<hash>.sql.gz` (phpMyAdmin reads .gz directly) → Go.
+**Via phpMyAdmin (easiest):** WordPress Toolkit → your site → **Database** → **phpMyAdmin** → select the site's DB → **Import** tab → upload `nswmk-PROD-<hash>.sql.gz` (phpMyAdmin reads .gz directly) → Go.
 
 **Or via SSH/WP-CLI:**
 ```bash
-gunzip nswal-PROD-<hash>.sql.gz
-wp db import nswal-PROD-<hash>.sql          # run from the docroot
+gunzip nswmk-PROD-<hash>.sql.gz
+wp db import nswmk-PROD-<hash>.sql          # run from the docroot
 ```
 
 ## 6. Search-replace the domain (serialization-safe — REQUIRED)
@@ -57,7 +57,7 @@ Polylang/block data is serialized, so this must NOT be a raw SQL find/replace.
 
 **WP-CLI (SSH into the site, `cd` to the docroot):**
 ```bash
-wp search-replace 'nswal.local' 'YOUR-PROD-DOMAIN' --all-tables --report-changes-only
+wp search-replace 'nswmk.local' 'YOUR-PROD-DOMAIN' --all-tables --report-changes-only
 ```
 > Plesk's WordPress Toolkit provides WP-CLI. If SSH is disabled, install the **"Better Search Replace"** plugin and run the same replace from wp-admin (it's serialization-safe).
 
@@ -78,7 +78,7 @@ WordPress admin → **Settings → Permalinks → Save Changes** (regenerates `.
 - **Language switcher** (SQ | EN, active = purple) works and switches to the translated page.
 - Agencies/Partners show **logos** (uploads copied) in the correct language.
 - Contact form submits.
-- wp-admin: Agencies/Partners show as **sq/en translation pairs** (Polylang column); Languages → Strings has the Albanian.
+- wp-admin: Agencies/Partners show as **mk/sq/en translation sets** (Polylang column); Languages → Strings has the Macedonian and Albanian.
 
 ---
 

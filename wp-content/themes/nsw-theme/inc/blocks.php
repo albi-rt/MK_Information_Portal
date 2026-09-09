@@ -156,7 +156,7 @@ function nsw_theme_field( array $attributes, string $key, string $fallback = '' 
  */
 function nsw_theme_brand_logo_files(): array {
 	// North Macedonia (nswmk) brand: all three languages share the same NMK
-	// lockup — there is no per-language variant like the Albania build had.
+	// lockup — there is no per-language variant of it.
 	// nsw-nmk-logo-red.svg / nsw-nmk-logo-red-light.svg are PLACEHOLDER marks
 	// (see nsw-mk MIGRATION_TODO.md: "Replace placeholder NSW NMK SVG logos
 	// with real branding") — swap the two files in assets/images/logos/ (and

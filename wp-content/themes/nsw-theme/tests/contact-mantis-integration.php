@@ -12,7 +12,7 @@
 if ( ! defined( 'ABSPATH' ) ) { define( 'ABSPATH', __DIR__ . '/' ); }
 
 define( 'NSW_THEME_MANTIS_URL',        getenv( 'MANTIS_URL' )   ?: 'http://localhost:8090/' );
-define( 'NSW_THEME_MANTIS_TOKEN',      getenv( 'MANTIS_TOKEN' ) ?: 'nswaldevtoken0000000000000000000' );
+define( 'NSW_THEME_MANTIS_TOKEN',      getenv( 'MANTIS_TOKEN' ) ?: 'nswmkdevtoken0000000000000000000' );
 define( 'NSW_THEME_MANTIS_PROJECT_ID', getenv( 'MANTIS_PROJECT_ID' ) ?: '1' );
 
 /* --- Real HTTP shims (curl-backed), WP-compatible shapes --- */
@@ -59,7 +59,7 @@ if ( false === $ping ) { echo "SKIP: Mantis not reachable at " . NSW_THEME_MANTI
 $data = array(
     'fullName'     => 'Arben Krasniqi',
     'email'        => 'arben@example.al',
-    'organization' => 'Doganat Shqiptare',
+    'organization' => 'Царинска управа',
     'category'     => 'lpco',
     'agency'       => 'customs',
     'subject'      => 'LPCO upload fails',
@@ -79,11 +79,11 @@ $issue = json_decode( $raw, true )['issues'][0] ?? ( json_decode( $raw, true )['
 
 check( 'summary matches subject', ( $issue['summary'] ?? '' ) === 'LPCO upload fails' );
 check( 'category mapped to "LPCO process"', ( $issue['category']['name'] ?? '' ) === 'LPCO process' );
-check( 'reporter is the service account nswal_web', ( $issue['reporter']['name'] ?? '' ) === 'nswal_web' );
+check( 'reporter is the service account nswmk_web', ( $issue['reporter']['name'] ?? '' ) === 'nswmk_web' );
 $cf = array();
 foreach ( ( $issue['custom_fields'] ?? array() ) as $row ) { $cf[ $row['field']['name'] ] = $row['value']; }
 check( 'cf Customer Name',   ( $cf['Customer Name']   ?? '' ) === 'Arben Krasniqi' );
-check( 'cf Organization',    ( $cf['Organization']    ?? '' ) === 'Doganat Shqiptare' );
+check( 'cf Organization',    ( $cf['Organization']    ?? '' ) === 'Царинска управа' );
 check( 'cf Relevant Agency mapped to "Customs"', ( $cf['Relevant Agency'] ?? '' ) === 'Customs' );
 check( 'cf Source Channel = Portal', ( $cf['Source Channel'] ?? '' ) === 'Portal' );
 check( 'description starts with From: line', strpos( (string) ( $issue['description'] ?? '' ), 'From: Arben Krasniqi <arben@example.al>' ) === 0 );

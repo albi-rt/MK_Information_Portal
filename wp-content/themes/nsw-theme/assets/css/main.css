@@ -2,7 +2,7 @@
    NSW North Macedonia — main stylesheet.
 
    Brand palette (2026): North Macedonia "NMK Red" — replaces the NSW
-   Albania purple placeholder. Source of truth is the reference Next.js
+   brand placeholder. Source of truth is the reference Next.js
    site (nsw-mk), app/globals.css shadcn/Tailwind tokens, defined in OKLCH
    and here converted to the closest in-gamut sRGB hex (CSS Color 4 gamut
    mapping, i.e. what a browser actually paints — NOT a naive per-channel
