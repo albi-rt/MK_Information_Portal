@@ -21,7 +21,28 @@ add_action(
 		if ( function_exists( 'has_site_icon' ) && has_site_icon() ) {
 			return;
 		}
-		echo '<link rel="icon" type="image/svg+xml" href="' . esc_url( NSW_THEME_URI . 'assets/images/logos/favicon.svg?v=' . NSW_THEME_VERSION ) . '" />' . "\n";
+		/* Favicon set generated from the NSW brand mark (the window symbol from
+		   the logo lockup — the wordmark is illegible below ~64px). The mark is
+		   navy, so it sits on a white tile: a transparent background would make
+		   it disappear on a dark browser tab. Each URL carries the theme version
+		   so a rebrand actually reaches browsers, which cache icons hard. */
+		$icons = array(
+			array( 'rel' => 'icon',             'file' => 'favicon.ico',          'type' => 'image/x-icon', 'sizes' => 'any' ),
+			array( 'rel' => 'icon',             'file' => 'favicon-32.png',       'type' => 'image/png',    'sizes' => '32x32' ),
+			array( 'rel' => 'icon',             'file' => 'favicon-16.png',       'type' => 'image/png',    'sizes' => '16x16' ),
+			array( 'rel' => 'apple-touch-icon', 'file' => 'apple-touch-icon.png', 'type' => '',             'sizes' => '180x180' ),
+			array( 'rel' => 'icon',             'file' => 'favicon-192.png',      'type' => 'image/png',    'sizes' => '192x192' ),
+			array( 'rel' => 'icon',             'file' => 'favicon-512.png',      'type' => 'image/png',    'sizes' => '512x512' ),
+		);
+		foreach ( $icons as $icon ) {
+			printf(
+				'<link rel="%s"%s sizes="%s" href="%s" />' . "\n",
+				esc_attr( $icon['rel'] ),
+				'' === $icon['type'] ? '' : ' type="' . esc_attr( $icon['type'] ) . '"',
+				esc_attr( $icon['sizes'] ),
+				esc_url( NSW_THEME_URI . 'assets/images/logos/' . $icon['file'] . '?v=' . NSW_THEME_VERSION )
+			);
+		}
 	}
 );
 
