@@ -12,7 +12,7 @@
 if ( ! defined( 'ABSPATH' ) ) { define( 'ABSPATH', __DIR__ . '/' ); }
 
 define( 'NSW_THEME_MANTIS_URL',        getenv( 'MANTIS_URL' )   ?: 'http://localhost:8090/' );
-define( 'NSW_THEME_MANTIS_TOKEN',      getenv( 'MANTIS_TOKEN' ) ?: 'nswmkdevtoken0000000000000000000' );
+define( 'NSW_THEME_MANTIS_TOKEN',      getenv( 'MANTIS_TOKEN' ) ?: '' );
 define( 'NSW_THEME_MANTIS_PROJECT_ID', getenv( 'MANTIS_PROJECT_ID' ) ?: '1' );
 
 /* --- Real HTTP shims (curl-backed), WP-compatible shapes --- */
@@ -50,6 +50,10 @@ require __DIR__ . '/../inc/contact-mantis.php';
 
 $fails = 0;
 function check( $label, $cond ) { global $fails; echo ( $cond ? "  ok  - " : "  FAIL- " ) . "$label\n"; if ( ! $cond ) { $fails++; } }
+
+/* Skip unless a token is given (no built-in token). */
+if ( '' === NSW_THEME_MANTIS_TOKEN ) { echo "SKIP: set MANTIS_TOKEN to run the live test
+"; exit( 0 ); }
 
 /* Skip gracefully if Mantis isn't reachable. */
 $ping = @file_get_contents( rtrim( NSW_THEME_MANTIS_URL, '/' ) . '/api/rest/issues?page_size=1', false,
